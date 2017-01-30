@@ -1,9 +1,9 @@
-# post2myid
--Bootstrap
--Places Library in the Google Maps JavaScript API
--jQuery plugin Tokeninput 
--PHP QR Code (sourceforge) - generate qr code
--FPDF - generate pdf file
+# post2myid :
+* Bootstrap
+* Places Library in the Google Maps JavaScript API
+* jQuery plugin Tokeninput 
+* PHP QR Code (sourceforge) - generate qr code
+* FPDF - generate pdf file
 
 ## Homepage
 ![alt tag](https://cloud.githubusercontent.com/assets/13564825/22435439/045ba3cc-e75b-11e6-8583-cae576474b94.png)
