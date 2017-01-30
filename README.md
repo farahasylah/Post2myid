@@ -13,6 +13,8 @@
 
 ## Create Shipment
 ![alt tag](https://cloud.githubusercontent.com/assets/13564825/22435443/046186ca-e75b-11e6-962b-25b1c07ed472.png)
+after shipment is created,a qr code will be issued
+![alt tag](https://cloud.githubusercontent.com/assets/13564825/22437087/98b9dbb4-e761-11e6-90bd-c62f54fbb0d4.JPG)
 
 ## User Profile
 ![alt tag](https://cloud.githubusercontent.com/assets/13564825/22435440/045cb442-e75b-11e6-87c7-50583fc97f64.png)
