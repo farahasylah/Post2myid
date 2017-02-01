@@ -19,12 +19,11 @@ function confirmDelete(){
 			border-left-width: 90px;
 			border-right-width: 90px;
 		}
-	</style>
+</style>
 <head>
 	<title>Contacts List</title>  
-</head>
-	<body>
-	<?php
+</head><body>
+<?php
 	if(!isset($_SESSION["Member"]))
 		{	header("Location: Login.php"); 	}
 	else
@@ -35,16 +34,14 @@ function confirmDelete(){
 			WHERE `S_id` ='$Member')";
 	if ($result = mysqli_query($conn, $sql))
 		{ 
-	?>
-	
+?>
 	<div id="content-shipment">
-	
 	<div class="row">
 	<form name="deleteContact" method="post" onSubmit="return confirmDelete();"/>
 	<div class="col-lg-10 col-md-10" >
 	<div class="panel panel-default">
-	<div class="panel-heading"><h2>Contact List </h2></div>
-	<div class="panel-body">
+		<div class="panel-heading"><h2>Contact List </h2></div>
+		<div class="panel-body">
 		<table class="table table-hover">
 		<thead>
 			<tr>
@@ -73,12 +70,11 @@ function confirmDelete(){
 	</form>
 	</div>
 </div>
-	<div id="footer">
-		Copyright &copy; 2015. All Rights Reserved 
-		<span style = "float:right">Online ID to Physical Postal Address | Project 144</span>
-     </div>
-	</body>
-</html>
+<div id="footer">
+	Copyright &copy; 2015. All Rights Reserved 
+	<span style = "float:right">Online ID to Physical Postal Address | Project 144</span>
+</div>
+</body></html>
 
 <?php 
 	if(isset($_POST['submitDelete'])){
@@ -87,6 +83,5 @@ function confirmDelete(){
 		$delete ="DELETE FROM contacts WHERE R_id='$id' AND  S_id ='$Member'";
 		$result = mysqli_query($conn, $delete);
     }
-	
 	echo "<script>window.location.href='Contacts.php'</script>";
 }

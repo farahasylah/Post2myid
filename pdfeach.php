@@ -1,19 +1,14 @@
 <?php
 require('fpdf/fpdf.php');
-
 $id = ($_GET['orderid']);
+$image= 'phpqrcode/Shipment/'.$id.'.png';
+class PDF extends FPDF{
+	protected $B = 0;
+	protected $I = 0;
+	protected $U = 0;
+	protected $HREF = '';
 
- $image= 'phpqrcode/Shipment/'.$id.'.png';
-
-class PDF extends FPDF
-{
-protected $B = 0;
-protected $I = 0;
-protected $U = 0;
-protected $HREF = '';
-
-function WriteHTML($html)
-{
+function WriteHTML($html){
     // HTML parser
     $html = str_replace("\n",' ',$html);
     $a = preg_split('/<(.*)>/U',$html,-1,PREG_SPLIT_DELIM_CAPTURE);
@@ -92,7 +87,6 @@ function PutLink($URL, $txt)
     $this->SetTextColor(0);
 }
 
-
 function Footer()
 {
     // Page footer
@@ -168,7 +162,6 @@ function PrintChapter($num, $title, $file)
 }
 function FancyTable()
 {
-	
     // Colors, line width and bold font
     $this->SetFillColor(0,128,128);
     $this->SetTextColor(255);
@@ -179,7 +172,6 @@ function FancyTable()
 	$this->SetFillColor(192);
 	$this->Rect(58, 12, 100, 200,[ DF]);
     // Header
-    
    
     $this->Ln();
     // Color and font restoration
@@ -189,7 +181,6 @@ function FancyTable()
     // Data
   
     $this->Ln();
-    
 }
 function multi($num, $title, $file)
 {
@@ -201,15 +192,10 @@ function multi($num, $title, $file)
 }
 
 $html = '<b>Post2myID</b>';
-
 $pdf = new PDF();
 // First page
-
 $pdf->AddPage();
-
-
 $pdf->SetAuthor('Post2myID');
-
 
 $pdf->SetFillColor(0,128,128);
 $pdf->Rect(73, 12, 65, 28, 'F');
@@ -224,15 +210,5 @@ $pdf->Image('postage_stamp.png',97,16,16,0);
 $pdf->Image($image,83,43,45,0);
 
 $pdf->Output();
-//$pdf->Write(5,"To find out what's new in this tutorial, click ");
-
-
-
-
-//$pdf->SetFont('','U');
-//$link = $pdf->AddLink();
-//$pdf->Write(5,'here',$link);
-//$pdf->SetFont('');
-// Second page
 
 ?>

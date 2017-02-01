@@ -10,14 +10,6 @@
 	<script type="text/javascript" src="js/jquery.validate.js"></script>
 </head>
 <script> //Google API
-
-      // This example displays an address form, using the autocomplete feature
-      // of the Google Places API to help users fill in the information.
-
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
       var placeSearch, autocomplete;
       var componentForm = {
         street_number: 'long_name',
@@ -92,11 +84,15 @@
     </script>
 <script type = "text/javascript" language = "javascript">
  $(document).ready(function() {
+ 	$("#accNav").attr("class", "disabled");
+	$( ".accNav" ).append( "<div class='down' style='left: 40;'></div>" );
    $( ".editable" ).prop( "disabled", true );
 	$( ".editable" ).css("border", "none");
 	$( ".editable" ).css("background-color", " #E0E0E0");
+	$("#hint").hide();
  
  $("#edit").click(function () {
+		$("#hint").show();
 		$("#save").show();
 		   $( ".editable" ).prop( "disabled", false );
 		   $( ".editable" ).css("border", "1px solid #d1c7ac");
@@ -111,7 +107,6 @@
 	lastname: "required",
 	tel: "required",
 	},
-	 
 	//specify validation error messages
 	messages: {
 	firstname: "field cannot be blank!",
@@ -122,7 +117,6 @@
 	submitHandler: function(form){
 	form.submit();
 	}
-	 
 	});
 });
 </script>
@@ -136,8 +130,6 @@
 			$sql = "SELECT * FROM `Account` WHERE `acc_ID` ='$Member'";
 			$result = mysqli_query($conn,$sql);
 			while($rows=mysqli_fetch_array($result)){  ?>
-	
-	
 	<div id="content-shipment">
 	<div class="row">
 	<div class="col-lg-10 col-md-10 col-xs-12" >
@@ -149,62 +141,51 @@
 			<ul class="list-group">
 				  <li class="list-group-item"> 
 						<label> Account ID  </label>&nbsp; :
-						<span ><?php echo $rows['acc_ID'];  ?></span>
-					</li>
+						<span ><?php echo $rows['acc_ID'];  ?></span></li>
 					<li class="list-group-item">
 						<label> Email address  </label>&nbsp; :
-						<span name="email"  ><?php echo $rows['Acc_email'];  ?></span>
-					</li>
+						<span name="email"  ><?php echo $rows['Acc_email'];  ?></span></li>
 				  <li class="list-group-item">
 						<label>  First Name  </label>&nbsp; :
-						<input type = "text" name = "firstname" class = "editable" value="<?php echo $rows['firstname'];  ?>" />
-					</li>
+						<input type = "text" name = "firstname" class = "editable" value="<?php echo $rows['firstname'];  ?>" /></li>
 				  <li class="list-group-item"> 
-						<label>  Last Name  </label>
-						&nbsp; :
-						<input type = "text" name = "lastname" class = "editable"  value="<?php echo $rows['lastname'];  ?>" />
-					</li>
+						<label>  Last Name  </label>&nbsp; :
+						<input type = "text" name = "lastname" class = "editable"  value="<?php echo $rows['lastname'];  ?>" /></li>
 					<li class="list-group-item">
-						<label> Phone No </label>
-						&nbsp; :
-						<input  type = "tel" name = "tel" class = "editable"  value="<?php echo $rows['phone_no'];  ?>" />
-					</li>
+						<label> Phone No </label>&nbsp; :
+						<input  type = "tel" name = "tel" class = "editable"  value="<?php echo $rows['phone_no'];  ?>" /></li>
 					<li class="list-group-item">
 						<label >Address </label>&nbsp; :
 						<div id="locationField">
-						<input class = "editable"  id="autocomplete" placeholder="Enter your address"onFocus="geolocate()" 
-						type="text" value="<?php echo $rows['street_address'].', '.$rows['postcode'].' '.$rows['city'].', '.$rows['country'];  ?>"></input>
+							<input class = "editable"  id="autocomplete" placeholder="Enter your address"onFocus="geolocate()" 
+							type="text" value="<?php echo $rows['street_address'].', '.$rows['postcode'].' '.$rows['city'].', '.$rows['country'];  ?>"></input>
+							<p id ="hint" style="font-size:11px;float:right;">search here on Google Map</p>
 						</div>
 					</li>
 					<li class="list-group-item">
-					<div id = "addressform"  style="display:none;">
-						</br>
+					<div id = "addressform"  style="display:none;"></br>
 					<fieldset>
-					<input name="name" class="field" type="text" id="name" 
-					style="width:100%"  type="text" value="<?php echo $rows['street_address']?>" hidden>
-					
-					<label>Street Number</label>
-					<input name="street_number" class="field" id="street_number" style="width:20%"  
-							 type="text" value="<?php echo $rows['street_address']?>"></input>
-					<input name="route"  class="field" id="route" style="width:60%"  
-							 type="text" >
-				
-						<label>City</label>
-						<input name="locality"  class="field" id="locality" style="width:100%"  
-						 type="text" value="<?php echo $rows['city']?>">
-				
-						<label>State</label>
-						<input name="administrative_area_level_1" class="field" style="width:100%"  
-						id="administrative_area_level_1"  type="text"  >
-				
-						<label>Postal Code</label>
-						<input name="postal_code" class="field" id="postal_code" style="width:100%"  
-						 value="<?php echo $rows['postcode']?>">
-				
-						<label>Country</label>
-						<input name="country" class="field" style="width:100%"  
-						id="country"   type="text"  value="<?php echo $rows['country']?>">
-					
+					<p><label> Building Name &nbsp; : </label>
+						<input name="name" class = "inputbox" class="field" type="text" id="name" 
+						 type="text"> </p>
+					<p><label> Street &nbsp; : </label>
+						<input name="street_number" class = "inputbox" class="field" id="street_number"  
+							 type="text" value="<?php echo $rows['street_address']?>"></input></p>
+					<p><label> &nbsp;  </label>
+						<input name="route" class = "inputbox"  class="field"  id="route"
+							 type="text" ></p>
+					<p><label> City &nbsp; : </label>
+						<input name="locality" class = "inputbox"   class="field" id="locality" 
+						 type="text" value="<?php echo $rows['city']?>"></p>
+					<p><label>State &nbsp; : </label>
+						<input name="administrative_area_level_1" class = "inputbox"  class="field" 
+						id="administrative_area_level_1"  type="text"  ></p>
+					<p><label> Postal Code &nbsp; : </label>
+						<input name="postal_code" class = "inputbox"  class="field" id="postal_code" 
+						 value="<?php echo $rows['postcode']?>"></p>
+					<p><label>Country &nbsp; : </label>
+						<input name="country" class = "inputbox"  class="field" id="country"  
+						 type="text"  value="<?php echo $rows['country']?>"></p>
 					</fieldset>
 					</div>
 					</li>
@@ -222,12 +203,11 @@
 	</div>
 </div>
 		
-		<div id="footer">
-		Copyright &copy; 2015. All Rights Reserved 
-		<span style = "float:right">Online ID to Physical Postal Address | Project 144</span>
-     </div>
-	</body>
-</html>
+<div id="footer">
+	Copyright &copy; 2015. All Rights Reserved 
+	<span style = "float:right">Online ID to Physical Postal Address | Project 144</span>
+</div>
+</body></html>
 
 <?php 
 if(isset($_POST['submit']))
@@ -259,7 +239,5 @@ if(isset($_POST['submit']))
 	else{
 	echo "<script>window.location.href='Account.php'</script>";
 	}
-
-
 }
 ?>
