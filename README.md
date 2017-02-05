@@ -1,7 +1,6 @@
 # post2myid :
 * Bootstrap
 * Places Library in the Google Maps JavaScript API - autocomplete address
-* jQuery plugin Tokeninput
 * PHP QR Code (sourceforge) - generate qr code
 * FPDF - generate pdf file
 
