@@ -1,4 +1,5 @@
 # post2myid :
+This project provides user with a unique representation of all the information needed to deliver their mail or parcel. This project resolve the issue of having incorrect or incomplete address and handwritten recognition on the consignment note.
 * Bootstrap
 * Places Library in the Google Maps JavaScript API - autocomplete address
 * PHP QR Code (sourceforge) - generate qr code
@@ -12,7 +13,7 @@ features Google autocomplete address
 ![alt tag](https://cloud.githubusercontent.com/assets/13564825/22495187/0bf817f4-e879-11e6-80fd-d889043d3be0.png)
 
 ## Track Shipment
-![alt tag](https://cloud.githubusercontent.com/assets/13564825/22435441/045d6932-e75b-11e6-9104-c81a338f2af2.png)
+![alt tag](https://cloud.githubusercontent.com/assets/13564825/22924607/bf6ab172-f2e0-11e6-8684-28b0b39858be.png)
 
 ## Create Shipment
 User key in parcel or mail details and select recepients
