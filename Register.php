@@ -1,19 +1,19 @@
 <?php include("sources.php"); ?>
 <html>
 <head><title>Registration</title>
-<link rel="stylesheet" type="text/css" href="styles.css" />
-<style type="text/css" media="screen"></style>
-<style>
-	#frmCheckUsername {border-top:#F0F0F0 2px solid;background:#FAF8F8;padding:10px;}
-	.demoInputBox{padding:7px; border:#F0F0F0 1px solid; border-radius:4px;}
-	.status-available{color:#2FC332;}
-	.status-not-available{color:#D60202;}
-</style>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMhmkThgiu1mNBP6PuuN4NZbIsBQLBWjg&libraries=places&callback=initAutocomplete"
-        async defer></script>
-</head>
-<script> //Google API
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<style type="text/css" media="screen"></style>
+	<style>
+		#frmCheckUsername {border-top:#F0F0F0 2px solid;background:#FAF8F8;padding:10px;}
+		.demoInputBox{padding:7px; border:#F0F0F0 1px solid; border-radius:4px;}
+		.status-available{color:#2FC332;}
+		.status-not-available{color:#D60202;}
+	</style>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMhmkThgiu1mNBP6PuuN4NZbIsBQLBWjg&libraries=places&callback=initAutocomplete"
+			async defer></script>
+
+<script> // Google API
       var placeSearch, autocomplete;
       var componentForm = {
         street_number: 'long_name',
@@ -25,29 +25,20 @@
       };
 
       function initAutocomplete() {
-        // Create the autocomplete object, restricting the search to geographical
-        // location types.
         autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+            (document.getElementById('autocomplete')),
             {types: ["geocode", "establishment"]});
-
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
         autocomplete.addListener('place_changed', fillInAddress);
       }
 
       function fillInAddress() {
-        // Get the place details from the autocomplete object.
         var place = autocomplete.getPlace();
 		
-
         for (var component in componentForm) {
           document.getElementById(component).value = '';
           document.getElementById(component).disabled = false;
         }
 
-        // Get each component of the address from the place details
-        // and fill the corresponding field on the form.
 		var fullAddress = [];
         for (var i = 0; i < place.address_components.length; i++) {
           var addressType = place.address_components[i].types[0];
@@ -67,9 +58,7 @@
         }
       }
 
-      // Bias the autocomplete object to the user's geographical location,
-      // as supplied by the browser's 'navigator.geolocation' object.
-      function geolocate() {
+    function geolocate() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var geolocation = {
@@ -84,61 +73,50 @@
           });
         }
       }
-	  google.maps.event.addDomListener(window, 'load', initAutocomplete)
-</script>
+	google.maps.event.addDomListener(window, 'load', initAutocomplete)
+// End of Google API </script> 
 
  <script type = "text/javascript" language = "javascript">
 	function checkPass()
 	{
-		//Store the password field objects into variables ...
 		var pass1 = document.getElementById('pass1');
 		var pass2 = document.getElementById('pass2');
-		//Store the Confimation Message Object ...
 		var message = document.getElementById('confirmMessage');
-		//Set the colors we will be using ...
 		var goodColor = "#66cc66";
 		var badColor = "#ff6666";
-		//Compare the values in the password field 
-		//and the confirmation field
+
     if(pass1.value == pass2.value){
-        //The passwords match. 
-        //Set the color to the good color and inform
-        //the user that they have entered the correct password 
         pass2.style.backgroundColor = goodColor;
         message.innerHTML = "Passwords Match!" }
 	else{
-        //The passwords do not match.
-        //Set the color to the bad color and
-        //notify the user.
         pass2.style.backgroundColor = badColor;
-        message.innerHTML = "Passwords Do Not Match!"
+        message.innerHTML = "Passwords do not match!"
     }}
 	
  $(document).ready(function() {
-  $( ".editable" ).css("border", "1px solid #d1c7ac");
+	// NAVIGATION POINTING
+	$( ".editable" ).css("border", "1px solid #d1c7ac");
 	$( ".editable" ).css("background-color", "cornsilk");
 	$("#geocomplete").geocomplete({
 									  map: ".map_canvas",
 									  details: "form",
 									  types: ["geocode", "establishment"],
 									});
-			$("#geocomplete").trigger("geocode");
+	$("#geocomplete").trigger("geocode");
 
 	$("#validate-form").validate({
-		//specify the validation rules
 		rules: {
-		firstname: "required",
-		tel: "required",
-		postal_code: {
-		  required: true,
-		  number: true,
-		}
+			firstname: "required",
+			tel: "required",
+			postal_code: {
+			  required: true,
+			  number: true,
+			}
 		},
-		submitHandler: function(form){
-			form.submit();	}
+		submitHandler: function(form){	form.submit();		}
 	});	
 });</script>
-
+</head>
 <body>
 	<div id="content-shipment" >
 	<div class="row" style="margin:0px !important">
@@ -160,48 +138,48 @@
 			<p><label>Phone No &nbsp; : </label>
 			<input type = "tel" name = "tel" placeholder = "012-3456789" class = "inputbox" pattern = "\d{3}-\d{7}" /></p>
 		</div>	
-		<div class="col-lg-12 col-md-12 col-xs-12" ><hr>
-			<label ><u>  Address  </u></label></br></div>
+		<div class="col-lg-12 col-md-12 col-xs-12" ><hr></div>
 		<div class="col-lg-6 col-md-6 col-xs-12" >
+				<label ><u>  Address  </u></label>
+				<p><label >Address Search</label>&nbsp; : 
+				<div id="locationField">
+					<input id="autocomplete" placeholder="search on Google Map" onFocus="geolocate()" 
+						class="inputbox" type="text" ></input>
+				</div></p></br><hr>
 			<fieldset>
-			<p><label> Building Name &nbsp; : </label>
-				<input name="name" class = "inputbox" type="text" value=""></p>
-			<p><label> Street &nbsp; : </label>
-				<input name="street_number" id="street_number" class = "inputbox" type="text" value=""></p>
-			<p><label>  </label>
-				<input name="route"  id="route"  class = "inputbox" class="field" type="text" value=""></p></br>
-			<p><label>  </label>
-				<input name="sublocality" class = "inputbox" class="field"  type="text" value=""></p></br>
-			<p><label> Postal Code &nbsp; : </label>
-				<input name="postal_code"  id="postal_code" class = "inputbox" class="field" type="text" value=""></p>
-			<p><label> City &nbsp; : </label>
-				<input name="locality" id="locality" class = "inputbox" class="field" type="text" value=""></p>
-			<p><label>State &nbsp; : </label>
-				<input name="administrative_area_level_1" id="administrative_area_level_1" class = "inputbox"  class="field" type="text" value=""></p>
-			<p>	<label>Country &nbsp; : </label>
-				<input name="country" id="country" class = "inputbox"  class="field" type="text" value=""></p>	
+				<p><label> Building Name &nbsp; : </label>
+					<input name="name" class = "inputbox" type="text" value=""></p>
+				<p><label> Street &nbsp; : </label>
+					<input name="street_number" id="street_number" class = "inputbox" type="text" value=""></p>
+				<p><label>  </label>
+					<input name="route"  id="route"  class = "inputbox" class="field" type="text" value=""></p></br>
+				<p><label>  </label>
+					<input name="sublocality" class = "inputbox" class="field"  type="text" value=""></p></br>
+				<p><label> Postal Code &nbsp; : </label>
+					<input name="postal_code"  id="postal_code" class = "inputbox" class="field" type="text" value=""></p>
+				<p><label> City &nbsp; : </label>
+					<input name="locality" id="locality" class = "inputbox" class="field" type="text" value=""></p>
+				<p><label>State &nbsp; : </label>
+					<input name="administrative_area_level_1" id="administrative_area_level_1" class = "inputbox"  class="field" type="text" value=""></p>
+				<p>	<label>Country &nbsp; : </label>
+					<input name="country" id="country" class = "inputbox"  class="field" type="text" value=""></p>	
 			</fieldset>
-		</div>
+		</div> <!-- end of address section-->
 		<div class="col-lg-6 col-md-6 col-xs-12" >
-			<label >Address Search</label>&nbsp; : 
-			<div id="locationField">
-				<input id="autocomplete" placeholder="search on Google Map" onFocus="geolocate()" 
-					class="inputbox" type="text" ></input>
-			</div>
-		</div>
-		<div class="col-lg-12 col-md-12 col-xs-12" ><hr>
 			<p><label> Password &nbsp; : </label>
 				<input type = "password" name = "password" id = "pass1" class = "inputbox" required="true"/></p>
 			<p><label> Re-type password &nbsp; : </label>
-				<input type = "password" name = "repassword" id = "pass2" onkeyup="checkPass(); return false;" class = "inputbox" required="true"/></p>
+				<input type = "password" name = "repassword" id = "pass2" onchange="checkPass(); return false;" class = "inputbox" required="true"/></p>
 			<label id="confirmMessage" class="confirmMessage" style="border-style: inset;"></label>
-			</br>
+		</div><!-- end of password section-->
+		
+		<div class="col-lg-12 col-md-12 col-xs-12" ><hr></br>
 			<input type = "submit" name="submit" value ="Submit" class = "btn" />
 			<input type = "reset" name="clear" value ="Clear" class = "btn" />
 		</div>
 	</form>
-	</div>
-</div>
+	</div><!-- end of row -->
+</div><!-- end of content -->
 <div id="footer">
 	<span>Copyright &copy; 2015. All Rights Reserved </span>
 	<span style = "float:right">Online ID to Physical Postal Address | Project 144</span>
@@ -243,17 +221,15 @@ if(isset($_POST['submit'])){
 		die("Failed" . mysql_error());
 	}
 	else{
-	     echo "<div class='form'>
-			<h3>You are registered successfully.</h3>";
+	  	echo'<script type="text/javascript">alert("Registration Successful!");</script>';
 			$_SESSION["Member"] = mysqli_insert_id($conn);
 			echo "<script>window.location.href='home.php'</script>";
     }
 }
-/*  send email from mail server
+// THIS SECTION REQUIRES EMAIL SERVICE ON HOST IN ORDER TO SEND EMAILS
+/*  
 $insert_sql = "INSERT INTO Account ( acc_ID,Acc_email, password, firstname, lastname, phone_no, street_address, postcode, 
 					country, city,verified)VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	
- 
     if (mysqli_stmt_prepare($stmt, $insert_sql))
     {
       mysqli_stmt_bind_param($stmt, "X02134", $_POST["email"], $_POST["password"], $_POST["firstname"],$_POST["lastname"], 
