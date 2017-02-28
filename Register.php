@@ -169,7 +169,7 @@
 			<p><label> Password &nbsp; : </label>
 				<input type = "password" name = "password" id = "pass1" class = "inputbox" required="true"/></p>
 			<p><label> Re-type password &nbsp; : </label>
-				<input type = "password" name = "repassword" id = "pass2" onchange="checkPass(); return false;" class = "inputbox" required="true"/></p>
+				<input type = "password" name = "repassword" id = "pass2" onkeyup="checkPass(); return false;" class = "inputbox" required="true"/></p>
 			<label id="confirmMessage" class="confirmMessage" style="border-style: inset;"></label>
 		</div><!-- end of password section-->
 		
