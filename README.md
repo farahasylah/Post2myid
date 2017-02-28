@@ -10,7 +10,7 @@ This project provides user with a unique representation of all the information n
 
 ## Registration form
 features Google autocomplete address
-![alt tag](https://cloud.githubusercontent.com/assets/13564825/23393465/fcac6d2c-fdbd-11e6-8365-653080f102b2.jpg)
+![alt tag](https://cloud.githubusercontent.com/assets/13564825/23393465/fcac6d2c-fdbd-11e6-8365-653080f102b2.JPG)
 
 ## Track Shipment
 ![alt tag](https://cloud.githubusercontent.com/assets/13564825/22924607/bf6ab172-f2e0-11e6-8684-28b0b39858be.png)
